@@ -208,3 +208,50 @@
 .delivery-calculator [hidden]{display:none!important}
 .footer-logo{display:block}
 @media(max-width:540px){.footer-col a{min-height:44px;display:flex;align-items:center;margin-bottom:0}}
+
+/* Consistent page gutters, section rhythm, and icons. */
+.container{width:min(calc(100% - 10vw),var(--max))}
+.section,.section.tight{padding:42px 0}
+.site-footer{padding-top:42px}
+.page-hero{padding-bottom:38px}
+.montazh-hero-section{padding-bottom:38px}
+.callback-section{padding:42px 0}
+.arrow{display:inline-block;position:relative;flex:none;width:16px;height:16px;overflow:hidden;font-size:0;line-height:0;vertical-align:middle}
+.arrow::before{content:"";position:absolute;top:1px;right:1px;width:8px;height:8px;border-top:2px solid currentColor;border-right:2px solid currentColor}
+.arrow::after{content:"";position:absolute;top:8px;left:0;width:13px;height:2px;background:currentColor;transform:rotate(-45deg);transform-origin:center}
+.menu-toggle,.mobile-menu{display:none}
+.mobile-menu[hidden]{display:none!important}
+@media(min-width:1051px){.hero-wrap .hero-image{right:0}}
+
+@media(max-width:1050px){
+  .container{width:min(calc(100% - 48px),var(--max))}
+  .section,.section.tight{padding:38px 0}
+  .site-footer{padding-top:38px}
+  .menu-toggle{display:grid}
+  .mobile-menu{display:block;position:absolute;top:100%;left:0;right:0;background:#fff;border-top:1px solid var(--line);box-shadow:0 18px 30px #11171324}
+  .mobile-menu .container{padding:8px 0 14px}
+  .mobile-menu a{display:flex;align-items:center;min-height:48px;padding:10px 4px;border-bottom:1px solid #e8eee5;font-size:14px;font-weight:800}
+  .mobile-menu a:last-child{border-bottom:0}
+  .mobile-menu a:hover,.mobile-menu a:focus-visible{color:#4c9a1d}
+  .burger-icon{position:relative;width:18px;height:2px;border-radius:2px;background:currentColor}
+  .burger-icon::before,.burger-icon::after{content:"";position:absolute;left:0;width:18px;height:2px;border-radius:2px;background:currentColor}
+  .burger-icon::before{top:-6px}
+  .burger-icon::after{top:6px}
+  .menu-toggle[aria-expanded="true"] .burger-icon{background:transparent}
+  .menu-toggle[aria-expanded="true"] .burger-icon::before{top:0;transform:rotate(45deg)}
+  .menu-toggle[aria-expanded="true"] .burger-icon::after{top:0;transform:rotate(-45deg)}
+  .callback-section{padding:38px 0}
+}
+
+@media(max-width:540px){
+  .container{width:min(calc(100% - 32px),var(--max))}
+  .header-inner{gap:8px}
+  .section,.section.tight,.business-page .section,.business-page .section.tight{padding:32px 0}
+  .site-footer{padding-top:32px}
+  .page-hero{padding-bottom:32px}
+  .montazh-hero-section{padding-bottom:32px}
+  .callback-section,.location-section{padding:32px 0}
+  .catalog-section{padding-top:32px}
+  .location-title{white-space:normal}
+  .catalog-controls input,.catalog-controls select{min-width:0}
+}
