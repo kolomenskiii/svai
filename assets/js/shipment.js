@@ -17,22 +17,22 @@
     window.openSvaiLead('delivery',{context,opener:form.querySelector('[type="submit"]')});
   });
   document.querySelectorAll('[data-warehouse]').forEach(button => button.addEventListener('click', () => {
-    const warehouse = warehouses.find(item => item.id === button.dataset.warehouse);
-    if (!warehouse) return;
+    const {warehouseName: name,warehouseAddress: address,warehouseLon: lon,warehouseLat: lat} = button.dataset;
+    if (!name || !address || !lon || !lat) return;
     document.querySelectorAll('[data-warehouse]').forEach(item => {
       const selected = item === button;
       item.setAttribute('aria-pressed',String(selected));
-      item.firstChild.textContent = selected ? 'Выбран на карте ' : 'Показать на карте ';
+      item.querySelector('.warehouse-select-label').textContent = selected ? 'Выбран на карте' : 'Показать на карте';
       item.closest('.warehouse-card').classList.toggle('is-selected',selected);
     });
-    document.getElementById('warehouse-current-name').textContent = warehouse.name;
-    document.getElementById('warehouse-current-address').textContent = warehouse.address;
+    document.getElementById('warehouse-current-name').textContent = name;
+    document.getElementById('warehouse-current-address').textContent = address;
     const map = document.getElementById('warehouse-map');
-    map.title = `Склад — ${warehouse.name}`;
-    map.src = `https://yandex.ru/map-widget/v1/?ll=${warehouse.lon}%2C${warehouse.lat}&z=16&pt=${warehouse.lon}%2C${warehouse.lat}%2Cpm2gnm&l=map`;
+    map.title = `Склад — ${name}`;
+    map.src = `https://yandex.ru/map-widget/v1/?ll=${lon}%2C${lat}&z=16&pt=${lon}%2C${lat}%2Cpm2gnm&l=map`;
     const mapLink = document.getElementById('warehouse-map-link');
-    mapLink.href = `https://yandex.ru/maps/?ll=${warehouse.lon}%2C${warehouse.lat}&z=16&pt=${warehouse.lon}%2C${warehouse.lat}%2Cpm2gnm&l=map`;
-    mapLink.innerHTML = `Открыть ${warehouse.name} на Яндекс Картах <span class="arrow" aria-hidden="true">↗</span>`;
+    mapLink.href = `https://yandex.ru/maps/?ll=${lon}%2C${lat}&z=16&pt=${lon}%2C${lat}%2Cpm2gnm&l=map`;
+    mapLink.querySelector('.warehouse-map-link-label').textContent = `Открыть ${name} на Яндекс Картах`;
   }));
   update();
 })();
