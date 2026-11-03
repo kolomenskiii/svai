@@ -16,6 +16,10 @@
     const context = form.elements.zone.value === 'region' ? `Московская область, ${distance.value} км от МКАД. Предварительно: ${total.textContent}` : 'Москва. Предварительно: 3 000 ₽';
     window.openSvaiLead('delivery',{context,opener:form.querySelector('[type="submit"]')});
   });
+  document.querySelectorAll('.warehouse-card').forEach(card => card.addEventListener('click', event => {
+    if (event.target.closest('a, button')) return;
+    card.querySelector('[data-warehouse]').click();
+  }));
   document.querySelectorAll('[data-warehouse]').forEach(button => button.addEventListener('click', () => {
     const {warehouseName: name,warehouseAddress: address,warehouseLon: lon,warehouseLat: lat} = button.dataset;
     if (!name || !address || !lon || !lat) return;
